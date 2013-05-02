@@ -35,34 +35,43 @@
 			color: #6E6E6E;
 		}
 
-
+ .selectbox {
+ 
+ 	font-family: Brandon Grotesque, Helvetica, sans-serif;
+	font-size: 14px;
+			color: #FFFFFF;
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			background: #6e6e6e;
+			padding: 5px;
+}
 .sidebar {
 			
 			opacity: 0.9;
-			width: 350px;
+			width: 375px;
 			padding: 6px 8px;
 			position: fixed;
 			
 			font-family: Brandon Grotesque, Helvetica, sans-serif;
-			font-size: 18px;
+			font-size: 14px;
 			color: #FFFFFF;
 			box-shadow: 0 0 15px rgba(0,0,0,0.2);
 			border-radius: 5px;
 		}
 .sidebar h3 {
-			font-size: 20px;
+			font-size: 16px;
 			margin: 0px;
 			color:#FFF;
 }
 
 #sbA{ 
 			background: #ea6a50;
-			top: 100px;
+			top: 30px;
 			left: 15px
 	}
 #sbB{
 	background: #35bce1;
-			top: 400px; 
+			top: 330px; 
 			
 			left: 15px;
 	}
@@ -112,23 +121,24 @@ td#th{
 <div id="header">
 MAPPING TWITTSBURGH: Visualizing Twitter Data & Neighborhood Demographics
 <span id="tab">&nbsp;</span>
-<span id="fineprint">Sensemaking, Spring 2013, Carnegie Mellon University</span>
+<span id="fineprint">Sensemaking, Spring 2013, Carnegie Mellon University : @kjoseph5, @bobbinrobyn, @iantodhunter, @duhdavid</span>
 </div>
 
 	<div id="map"></div>
 	<div id="sbA" class="sidebar"></div>
 	<div id="sbB" class="sidebar"></div>
-
+	<div class="selectbox" id="selectbox"></div>
 	 <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
 	 <script src="penn3.js"></script>
 	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<script>
-	var map = L.map('map').setView([40.440625,-79.995886], 13);
+	var map = L.map('map').setView([40.440625,-79.995886], 12);
+	map.zoomControl.setPosition('topright');
 	L.tileLayer('http://{s}.tile.cloudmade.com/9f8f56837813441195eacdc64b1d2cec/22677/256/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: 'Term data from Twitter; Neighborhood data from <a href="http://www.pittsburghpa.gov/dcp/snap/">Pittsburgh SNAP</a> Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-    minZoom: 12
+    minZoom: 12,
 	}).addTo(map);
 	
 	
@@ -164,13 +174,14 @@ MAPPING TWITTSBURGH: Visualizing Twitter Data & Neighborhood Demographics
 	//SELECTOR
 	var comboBox = L.Control.extend({
 		 options: {
-//			 position: 'topleft'
-		 },
-
+        position: 'bottomright'
+  		  },
 		 onAdd: function (map) {
 			 // create the control container with a particular class name
-			 var container = L.DomUtil.create('combo', 'dropdown');
-			container.innerHTML = "<select id=\"sel\" class=\"selected\">"+
+			 var container = L.DomUtil.get('selectbox');
+			container.innerHTML = "<p>Select from the dropdown to change the color representation"+
+			"<br/>for a neighborhood, and see the value in the top right</p>"+
+			"<select id=\"sel\" class=\"selected\">"+
 			"<option value=\"Median.Home.Value\">Median Household Value</option>"+
 			"<option value=\"Residents.Employed\">Percentage of Residents Employed</option>"+
 			"<option value=\"High.School.Graduate.\">Percentage of Residents Having a HS Degree</option>"+
@@ -239,16 +250,16 @@ MAPPING TWITTSBURGH: Visualizing Twitter Data & Neighborhood Demographics
 			nonTerms = props.NonResidentTerms.split(" ");
 			nonWeights = props.NonResidentWeights.split(" ");
 			var tableContent = "<br/><table>";
-			tableContent += "<tr><td id=\"th\">Resident Terms</td>";
-			tableContent += "<td id=\"th\">Nonresident Terms</td></tr>";
+			tableContent += "<tr><td id=\"th\">Popular Resident Terms</td>";
+			tableContent += "<td id=\"th\">Popular Nonresident Terms</td></tr>";
 			console.log(resWeights);
 			console.log(nonWeights);
  			$.each(resTerms, function(i) {
 	   			tableContent += "<tr>";
 	   			var rT = (resWeights[i] == -1 ? '' : resTerms[i]);
 	   			var nT = (nonWeights[i] == -1 ? '' : nonTerms[i]);
-	   			var rW = resWeights[i]*5;
-	   			var nW = nonWeights[i]*5;
+	   			var rW = resWeights[i]*4;
+	   			var nW = nonWeights[i]*4;
    				tableContent+= '<td >'+ rT.fontsize(rW >5 ? 5 : rW < 2 ?  2: rW)+ "</td>";
    				tableContent+= '<td>'+ nT.fontsize(nW > 5 ? 5 : nW < 2 ? 2: nW)  + "</td>";
 				tableContent+= "</tr>";
