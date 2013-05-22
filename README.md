@@ -18,6 +18,9 @@ brandon_re.tff is a custom font built by Robyn Hammond.
 We also use local copies of leaflet.css and leaflet.js  -these local copies should be removed in future work.
 
 Kumar, Ravi, Mohammad Mahdian, and Mary McGlohon. 2010. “Dynamics of Conversations.” In Proceedings of the 16th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 553–562. KDD  ’10. New York, NY, USA: ACM. doi:10.1145/1835804.1835875. http://doi.acm.org/10.1145/1835804.1835875.
+
 Cho, Eunjoon, Seth A. Myers, and Jure Leskovec. 2011. “Friendship and Mobility: User Movement in Location-based Social Networks.” In Proceedings of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 1082–1090. KDD  ’11. New York, NY, USA: ACM. doi:10.1145/2020408.2020579. http://doi.acm.org/10.1145/2020408.2020579.
+
 Gimpel, Kevin, Nathan Schneider, Brendan O’Connor, Dipanjan Das, Daniel Mills, Jacob Eisenstein, Michael Heilman, Dani Yogatama, Jeffrey Flanigan, and Noah A. Smith. 2011. “Part-of-speech Tagging for Twitter: Annotation, Features, and Experiments.” In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies: Short Papers - Volume 2, 42–47. HLT  ’11. Stroudsburg, PA, USA: Association for Computational Linguistics. http://dl.acm.org/citation.cfm?id=2002736.2002747.
+
 Bivand, Roger, and Nicholas Lewin-Koh. 2013. Maptools: Tools for Reading and Handling Spatial Objects. http://CRAN.R-project.org/package=maptools.
